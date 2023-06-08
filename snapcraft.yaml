@@ -59,6 +59,7 @@ parts:
       - xsltproc
       - zlib1g-dev 
       - yelp-tools
+      - libgtksourceview-4-dev
   
   pluma-plugins:
     source: https://github.com/mate-desktop/pluma-plugins.git
@@ -83,6 +84,7 @@ parts:
       - xsltproc
       - zlib1g-dev    
       - yelp-tools
+      - libgtksourceview-4-dev
       
   cleanup:
     after: [pluma-mate]
