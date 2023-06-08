@@ -1,0 +1,94 @@
+name: pluma-mate
+base: core22
+adopt-info: pluma-mate
+grade: stable
+confinement: strict
+compression: lzo
+architectures:
+  - build-on: amd64
+  - build-on: arm64
+  - build-on: armhf
+
+slots:
+  pluma-mate:
+    interface: dbus
+    bus: session
+    name: io.github.CapeCrusader321.pluma
+    
+apps:
+  pluma-mate:
+    command: usr/bin/pluma
+    extensions: [gnome]
+    plugs:
+      - home
+      - avahi-observe
+      - network
+      - network-status
+      - network-bind
+      - optical-drive
+      - removable-media
+      - unity7
+      - screen-inhibit-control
+    desktop: usr/share/applications/pluma.desktop.in
+
+parts:
+  pluma-mate:
+    source: https://github.com/mate-desktop/pluma.git
+    parse-info: [usr/share/metainfo/atril.appdata.xml.in]
+    plugin: autotools
+    autotools-configure-parameters:
+       - --prefix=/usr
+    override-pull: |
+      craftctl default
+      craftctl set version=$(git describe --tags --abbrev=0 | cut -c 2-)
+    build-packages:
+      - build-essential   
+      - autopoint
+      - libcaja-extension-dev
+      - libdjvulibre-dev
+      - libgxps-dev
+      - libkpathsea-dev
+      - libsynctex-dev
+      - libsecret-1-dev
+      - libsm-dev
+      - libspectre-dev
+      - libtiff-dev
+      - libx11-dev
+      - libxml2-dev
+      - mate-common
+      - xsltproc
+      - zlib1g-dev 
+  
+  
+  pluma-plugins:
+    source: https://github.com/mate-desktop/pluma-plugins.git
+    after: [pluma-mate]
+    plugin: autotools
+    autotools-configure-parameters:
+       - --prefix=/usr
+    build-packages:
+      - build-essential   
+      - autopoint
+      - libcaja-extension-dev
+      - libdjvulibre-dev
+      - libgxps-dev
+      - libkpathsea-dev
+      - libsynctex-dev
+      - libsecret-1-dev
+      - libsm-dev
+      - libspectre-dev
+      - libtiff-dev
+      - libxml2-dev
+      - mate-common
+      - xsltproc
+      - zlib1g-dev    
+       
+  cleanup:
+    after: [pluma-mate]
+    plugin: nil
+    build-snaps: [core22, gtk-common-themes, gnome-42-2204]
+    override-prime: |
+      set -eux
+      for snap in "core22" "gtk-common-themes" "gnome-42-2204"; do
+        cd "/snap/$snap/current" && find . -type f,l -name *.so.* -exec rm -f "$CRAFT_PRIME/{}" \;
+      done 
