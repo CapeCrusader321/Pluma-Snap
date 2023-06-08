@@ -87,6 +87,7 @@ parts:
       - libgtksourceview-4-dev
       - libvte-2.91-dev
       - python3-dbus
+      
   cleanup:
     after: [pluma-mate]
     plugin: nil
