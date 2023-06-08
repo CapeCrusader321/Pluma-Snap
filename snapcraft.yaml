@@ -34,6 +34,7 @@ apps:
 parts:
   pluma-mate:
     source: https://github.com/mate-desktop/pluma.git
+    source-tag: v1.26.1 
     parse-info: [usr/share/metainfo/pluma.appdata.xml]
     plugin: autotools
     autotools-configure-parameters:
@@ -63,6 +64,7 @@ parts:
   
   pluma-plugins:
     source: https://github.com/mate-desktop/pluma-plugins.git
+    source-tag: v1.26.0 
     after: [pluma-mate]
     plugin: autotools
     autotools-configure-parameters:
