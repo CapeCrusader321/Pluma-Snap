@@ -89,9 +89,15 @@ parts:
       - libgtksourceview-4-dev
       - libvte-2.91-dev
       - python3-dbus
-      
+  
+  deps:
+    plugin: nil
+    after: [pluma-plugins]
+    stage-packages:
+      - libgtksourceview-4-0
+  
   cleanup:
-    after: [pluma-mate]
+    after: [deps]
     plugin: nil
     build-snaps: [core22, gtk-common-themes, gnome-42-2204]
     override-prime: |
