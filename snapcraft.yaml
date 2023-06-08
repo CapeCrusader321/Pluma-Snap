@@ -29,12 +29,12 @@ apps:
       - removable-media
       - unity7
       - screen-inhibit-control
-    desktop: usr/share/applications/pluma.desktop.in
+    desktop: usr/share/applications/pluma.desktop
 
 parts:
   pluma-mate:
     source: https://github.com/mate-desktop/pluma.git
-    parse-info: [usr/share/metainfo/atril.appdata.xml.in]
+    parse-info: [usr/share/metainfo/pluma.appdata.xml]
     plugin: autotools
     autotools-configure-parameters:
        - --prefix=/usr
@@ -85,7 +85,8 @@ parts:
       - zlib1g-dev    
       - yelp-tools
       - libgtksourceview-4-dev
-      
+      - libvte-2.91-dev
+      - python3-dbus
   cleanup:
     after: [pluma-mate]
     plugin: nil
