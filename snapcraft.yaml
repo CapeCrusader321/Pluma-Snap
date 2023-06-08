@@ -58,7 +58,7 @@ parts:
       - mate-common
       - xsltproc
       - zlib1g-dev 
-  
+      - yelp-tools
   
   pluma-plugins:
     source: https://github.com/mate-desktop/pluma-plugins.git
@@ -82,7 +82,8 @@ parts:
       - mate-common
       - xsltproc
       - zlib1g-dev    
-       
+      - yelp-tools
+      
   cleanup:
     after: [pluma-mate]
     plugin: nil
