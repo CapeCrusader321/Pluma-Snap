@@ -13,7 +13,7 @@ slots:
   pluma-mate:
     interface: dbus
     bus: session
-    name: io.github.CapeCrusader321.pluma
+    name: org.mate.pluma
     
 apps:
   pluma-mate:
