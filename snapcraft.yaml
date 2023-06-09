@@ -95,6 +95,8 @@ parts:
     after: [pluma-plugins]
     stage-packages:
       - libgtksourceview-4-0
+    prime:
+      - usr/lib/*/libgtksourceview-4.so*
   
   cleanup:
     after: [deps]
