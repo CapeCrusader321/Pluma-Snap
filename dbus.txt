@@ -1,0 +1,6 @@
+slots:
+  pluma-mate:
+    interface: dbus
+    bus: session
+    name: org.mate.pluma
+
