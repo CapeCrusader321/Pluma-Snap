@@ -9,12 +9,6 @@ architectures:
   - build-on: arm64
   - build-on: armhf
 
-slots:
-  pluma-mate:
-    interface: dbus
-    bus: session
-    name: org.mate.pluma
-    
 apps:
   pluma-mate:
     command: usr/bin/pluma
